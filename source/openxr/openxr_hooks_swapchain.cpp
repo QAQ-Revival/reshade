@@ -29,12 +29,12 @@
 
 struct openxr_session
 {
-	const XrGeneratedDispatchTable *dispatch_table = nullptr;
+	const XrGeneratedDispatchTableCore *dispatch_table = nullptr;
 	reshade::openxr::swapchain_impl *swapchain_impl = nullptr;
 };
 struct openxr_swapchain
 {
-	const XrGeneratedDispatchTable *dispatch_table = nullptr;
+	const XrGeneratedDispatchTableCore *dispatch_table = nullptr;
 	XrSwapchainCreateFlags create_flags = 0;
 	std::vector<reshade::api::resource> surface_images;
 	std::deque<uint32_t> acquired_index;
@@ -51,7 +51,7 @@ XrResult XRAPI_CALL xrCreateSession(XrInstance instance, const XrSessionCreateIn
 
 	assert(pCreateInfo != nullptr && pSession != nullptr);
 
-	const XrGeneratedDispatchTable &dispatch_table = g_openxr_instances.at(instance).dispatch_table;
+	const XrGeneratedDispatchTableCore &dispatch_table = g_openxr_instances.at(instance).dispatch_table;
 	RESHADE_OPENXR_GET_DISPATCH_PTR_FROM(CreateSession, &dispatch_table);
 
 	const XrResult result = trampoline(instance, pCreateInfo, pSession);

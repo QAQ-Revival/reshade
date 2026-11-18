@@ -20,7 +20,7 @@ static const T *find_in_structure_chain(const void *structure_chain, XrStructure
 struct openxr_instance
 {
 	XrInstance handle;
-	XrGeneratedDispatchTable dispatch_table;
+	XrGeneratedDispatchTableCore dispatch_table;
 };
 
 #define RESHADE_OPENXR_GET_DISPATCH_PTR(name) \

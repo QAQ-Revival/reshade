@@ -1,36 +1,45 @@
 [submodule "imgui"]
 	path = deps/imgui
-	url = https://github.com/ocornut/imgui.git
+	url = https://github.com/QAQ-Revival/imgui.git
+	branch = wwmi-dx12-sdk
 [submodule "minhook"]
 	path = deps/minhook
-	url = https://github.com/TsudaKageyu/minhook.git
+	url = https://github.com/QAQ-Revival/minhook.git
+	branch = master
 [submodule "stb"]
 	path = deps/stb
-	url = https://github.com/nothings/stb.git
+	url = https://github.com/QAQ-Revival/stb.git
+	branch = master
 [submodule "glad"]
 	path = deps/glad
-	url = https://github.com/Dav1dde/glad
+	url = https://github.com/QAQ-Revival/glad.git
 	branch = glad2
 [submodule "utfcpp"]
 	path = deps/utfcpp
-	url = https://github.com/nemtrif/utfcpp.git
+	url = https://github.com/QAQ-Revival/utfcpp.git
 	fetchRecurseSubmodules = false
+	branch = master
 [submodule "spirv"]
 	path = deps/spirv
-	url = https://github.com/KhronosGroup/SPIRV-Headers.git
+	url = https://github.com/QAQ-Revival/SPIRV-Headers.git
+	branch = main
 [submodule "vma"]
 	path = deps/vma
-	url = https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator
+	url = https://github.com/QAQ-Revival/VulkanMemoryAllocator.git
+	branch = master
 [submodule "fpng"]
 	path = deps/fpng
-	url = https://github.com/richgel999/fpng
+	url = https://github.com/QAQ-Revival/fpng.git
+	branch = main
 [submodule "d3d12"]
 	path = deps/d3d12
-	url = https://github.com/microsoft/DirectX-Headers.git
+	url = https://github.com/QAQ-Revival/DirectX-Headers.git
+	branch = main
 [submodule "openxr"]
 	path = deps/openxr
-	url = https://github.com/KhronosGroup/OpenXR-SDK.git
+	url = https://github.com/QAQ-Revival/OpenXR-SDK.git
+	branch = main
 [submodule "jxl_simple_lossless"]
 	path = deps/jxl_simple_lossless
-	url = https://github.com/kampidh/simple-lossless-encoder.git
+	url = https://github.com/QAQ-Revival/simple-lossless-encoder.git
 	branch = headers-and-color-profile

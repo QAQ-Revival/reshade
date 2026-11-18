@@ -11,6 +11,23 @@ add_subdirectory(deps)
 
 add_library(ReShade SHARED)
 
+# Match the shader resources built by ReShade.vcxproj when using CMake.
+find_program(RESHADE_FXC_EXECUTABLE NAMES fxc.exe REQUIRED)
+set(RESHADE_SHADER_RESOURCES "")
+foreach(SHADER IN ITEMS "copy_ps;ps_4_0" "fullscreen_vs;vs_4_0" "imgui_ps_3_0;ps_3_0" "imgui_ps_4_0;ps_4_0" "imgui_vs_3_0;vs_3_0" "imgui_vs_4_0;vs_4_0" "mipmap_cs_5_0;cs_5_0")
+  list(GET SHADER 0 SHADER_NAME)
+  list(GET SHADER 1 SHADER_PROFILE)
+  set(SHADER_OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/res/shaders/${SHADER_NAME}.cso")
+  add_custom_command(OUTPUT "${SHADER_OUTPUT}"
+    COMMAND "${RESHADE_FXC_EXECUTABLE}" /nologo /T "${SHADER_PROFILE}" /E main /Fo "${SHADER_OUTPUT}" "${CMAKE_CURRENT_SOURCE_DIR}/res/shaders/${SHADER_NAME}.hlsl"
+    DEPENDS "res/shaders/${SHADER_NAME}.hlsl" "res/shaders/imgui_hdr.hlsl"
+    VERBATIM)
+  list(APPEND RESHADE_SHADER_RESOURCES "${SHADER_OUTPUT}")
+endforeach()
+add_custom_target(ReShadeShaderResources DEPENDS ${RESHADE_SHADER_RESOURCES})
+add_dependencies(ReShade ReShadeShaderResources)
+set_property(SOURCE res/resource.rc APPEND PROPERTY OBJECT_DEPENDS "${RESHADE_SHADER_RESOURCES}")
+
 if(CMAKE_SIZEOF_VOID_P EQUAL 8)
   set(RESHADE_SUFFIX 64)
 else()
@@ -302,6 +319,7 @@ target_compile_definitions(
     _GDI32_
     WINSOCK_API_LINKAGE=
     _UNICODE
+    UNICODE
     _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS
     $<$<CONFIG:Debug>:_DEBUG>
     $<$<CONFIG:Release>:NDEBUG>
@@ -334,7 +352,7 @@ else()
   )
 endif()
 
-target_link_libraries(ReShade PRIVATE ReShadeFX D3D12On7 fpng glad ImGui jxl MinHook OpenVR OpenXR stb utfcpp VMA Windows)
+target_link_libraries(ReShade PRIVATE ReShadeFX D3D12On7 fpng glad ImGui jxl MinHook OpenVR OpenXR stb utfcpp VMA Windows xinput)
 
 # ReShade FX
 
@@ -373,6 +391,7 @@ target_compile_definitions(
   ReShadeFX
   PRIVATE
     _UNICODE
+    UNICODE
 )
 
 if(MSVC)

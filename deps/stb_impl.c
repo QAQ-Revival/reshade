@@ -7,4 +7,4 @@
 #include "stb_image_dds.h"
 #include "stb_image_write.h"
 #include "stb_image_write_hdr_png.h"
-#include "stb_image_resize2.h"
+#include "deprecated/stb_image_resize2.h"

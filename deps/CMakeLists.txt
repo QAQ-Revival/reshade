@@ -253,7 +253,7 @@ target_sources(
   stb
   PUBLIC
     stb/stb_image.h
-    stb/stb_image_resize2.h
+    stb/deprecated/stb_image_resize2.h
     stb/stb_image_write.h
     stb_image/stb_image_dds.h
     stb_image/stb_image_write_hdr_png.h
