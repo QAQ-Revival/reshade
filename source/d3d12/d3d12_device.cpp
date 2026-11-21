@@ -2343,7 +2343,7 @@ bool D3D12Device::invoke_create_and_init_pipeline_event(const D3D12_STATE_OBJECT
 			break;
 		case D3D12_STATE_SUBOBJECT_TYPE_LOCAL_SERIALIZED_ROOT_SIGNATURE:
 			break;
-		case D3D12_STATE_SUBOBJECT_TYPE_COMPILER_EXISTING_COLLECTION:
+		case D3D12_STATE_SUBOBJECT_TYPE_COMPILER_EXISITING_COLLECTION:
 			break;
 		default:
 			// Unknown sub-object type
